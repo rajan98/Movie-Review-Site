@@ -10,6 +10,7 @@ import { ReviewComponent } from './review/review.component';
 import { AdminComponent } from './admin/admin.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ReviewComponent,
     AdminComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AddMovieModalComponent
   ],
   imports: [
     BrowserModule,
