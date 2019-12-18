@@ -9,17 +9,20 @@
                     <div class="form-group">
                         <label for="username">Username: </label>
                         <input type="text" placeholder="Enter Username" class="form-control" name="username"
-                            id="username">
+                            id="username" [(ngModel)]="username">
                     </div>
                     <div class="form-group">
                         <label for="password">Password: </label>
-                        <input type="password" placeholder="Enter Username" class="form-control" name="password"
-                            id="password">
+                        <input type="password" placeholder="Enter password" class="form-control" name="password"
+                            id="password" [(ngModel)]="password">
                     </div>
                     <div class="text-right ">
-                        <button type="button" id="sendlogin" class="btn btn-dark ">Login</button>
+                        <button type="button" id="sendlogin" class="btn btn-dark " (click)="loginFunction()">Login</button>
                     </div>
                 </form>
+                <div class="row">
+                    <p *ngIf="loginButtonClick" class="ml-3">Login Failed</p>
+                </div>
             </div>
         </div>
     </div>
