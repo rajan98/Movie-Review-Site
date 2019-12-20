@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Head } from '../shared/head';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginSuccess: boolean = false;
   username: string;
   password: string;
+  headerData: Head[] = [];
 
   loginDetail = [
     {
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
     for(let i=0;i<this.loginDetail.length; i++){
       if(this.username == this.loginDetail[i].username && this.password == this.loginDetail[i].password){
         this.loginSuccess = true;
-        if(this.username == 'admin'){
+        if(this.username == 'admin'){ 
           this.router.navigate(['admin']);
         }
         else{
