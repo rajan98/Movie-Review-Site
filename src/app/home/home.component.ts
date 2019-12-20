@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
+import { MovieDetails, Movie } from '../shared/movieDetails';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,12 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  movies: Movie[];
+
+  constructor() {
+    let md = new MovieDetails();
+    this.movies = md.movies;
+   }
 
   ngOnInit() {
   }

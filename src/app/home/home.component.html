@@ -1,70 +1,17 @@
 <app-header [headerData]="headerData"></app-header>
-<div class="container mt-3" >
+<div class="container mt-3">
   <div class="d-flex">
     <h2 class="mr-auto">Welcome User</h2>
   </div>
-  <div class="row mt-5">
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/joker.jfif" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title" >Joker</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
-  </div>
-</div>
-      </div>
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/batman-begins.jpg" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title">Batman Begins</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
-  </div>
-</div>
-      </div>
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/dark-knight.jpg" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title">The Dark Knight</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
-  </div>
-</div>
+  <div class="row">
+    <div class="col-md-4 mt-5" *ngFor="let movie of movies">
+      <div class="card" style="width: 15rem;">
+        <img src={{movie.picSrc}} class="card-img-top" alt="..." style="width: 240px; height: 340px;">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.name}}</h5>
+          <p class="card-text">{{movie.releaseDate}}</p>
+          <p>Rating: {{movie.rating}}</p>
+        </div>
       </div>
     </div>
-  <div class="row mt-5">
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/justice-league.jfif" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title">Justice League</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
   </div>
-</div>
-      </div>
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/suicide-squad.jpg" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title" >Suicide Squad</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
-  </div>
-</div>
-      </div>
-    <div class="col-md">
-  <div class="card" style="width: 15rem;">
-  <img src="../../assets/img/dark-knight-rises" class="card-img-top" alt="..." style="width: 240px; height: 340px;">
-  <div class="card-body">
-    <h5 class="card-title">The Dark Knight Rises</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p>Rating: {{Rating}}</p>
-  </div>
-</div>
-      </div>
-    </div>
-</div>
