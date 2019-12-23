@@ -14,6 +14,8 @@ import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.
 
 import { AppRoutingModule } from './routing/routing.module';
 
+import { MovieService } from './services/movie.service';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { AppRoutingModule } from './routing/routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

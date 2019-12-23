@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
-import { MovieDetails, Movie } from '../shared/movieDetails';
+import { MovieService } from '../services/movie.service';
+
 
 @Component({
   selector: 'app-home',
@@ -32,11 +33,7 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  movies: Movie[];
-
-  constructor() {
-    let md = new MovieDetails();
-    this.movies = md.movies;
+  constructor(private movieService: MovieService) {
    }
 
   ngOnInit() {

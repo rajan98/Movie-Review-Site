@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
-import { MovieDetails, Movie } from '../shared/movieDetails';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,8 +8,6 @@ import { MovieDetails, Movie } from '../shared/movieDetails';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  movies: Movie[];
 
   headerData: Head[] = [
     {
@@ -24,9 +22,7 @@ export class AdminComponent implements OnInit {
     }
   ];
 
-  constructor() {
-    let md = new MovieDetails();
-    this.movies = md.movies;
+  constructor(private movieService: MovieService) {
    }
 
   ngOnInit() {

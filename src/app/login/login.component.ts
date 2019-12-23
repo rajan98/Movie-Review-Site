@@ -22,16 +22,16 @@ export class LoginComponent implements OnInit {
       password :  "admin"
     },
     {
-      username : "user",
-      password : "user"
+      username : "udita",
+      password : "atidu"
     },
     {
       username : "tom",
       password : "mot",
     },
     {
-      username : "Raj",
-      password : "jaR"
+      username : "raj",
+      password : "jar"
     }
   ]
 

@@ -4,7 +4,7 @@
     <h2 class="mr-auto">Welcome User</h2>
   </div>
   <div class="row">
-    <div class="col-md-4 mt-5" *ngFor="let movie of movies">
+    <div class="col-md-4 mt-5" *ngFor="let movie of movieService.getMovies()">
       <div class="card" style="width: 15rem;">
         <img src={{movie.picSrc}} class="card-img-top" alt="..." style="width: 240px; height: 340px;">
         <div class="card-body">
