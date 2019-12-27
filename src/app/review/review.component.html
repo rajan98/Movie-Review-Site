@@ -1,2 +1,15 @@
-<app-header></app-header>
-<p>review works!</p>
+<app-header [headerData]="headerData"></app-header>
+<div class="row mt-4">
+    <div class="col-md-5 d-flex justify-content-center">
+        <img src={{movie.picSrc}} alt="MoviePicture" style="height:800px">
+    </div>
+    <div class="col-md-5">
+        <h1 class="display-2 font-weight-bold">{{movie.name}}</h1>
+        <h4>{{movie.rating}}</h4>
+        <h4>{{movie.releaseDate}}</h4>
+        <p class="mt-5 description">{{movie.description}}</p>
+    </div>
+    <div>
+    <button class="btn btn-primary" (click)="goBack()">Back</button>
+    </div>
+</div>
