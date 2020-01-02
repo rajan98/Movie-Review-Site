@@ -1,7 +1,7 @@
 <app-header [headerData]="headerData"></app-header>
 <div class="container mt-3">
   <div class="d-flex">
-    <h2 class="mr-auto">Welcome User</h2>
+    <h2 class="mr-auto">Welcome {{ userName | titlecase }}</h2>
   </div>
   <div class="row">
     <div class="col-md-4 mt-5" *ngFor="let movie of movieService.getMovies()">

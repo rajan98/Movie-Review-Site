@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
 import { MovieService } from '../services/movie.service';
 
+import { Params, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -10,19 +12,29 @@ import { MovieService } from '../services/movie.service';
 })
 export class HomeComponent implements OnInit {
 
-  headerData: Head[] = [
-    {
-      link: "/home",
+  userName: string;
+
+  headerData: Head[];
+
+  constructor(private movieService: MovieService,
+    private route: ActivatedRoute) {
+   }
+
+  ngOnInit() {
+    this.userName = this.route.snapshot.params['userName'];
+    this.headerData = [
+     {
+      link: "/home/" + this.userName,
       name: "Home",
-      selected: true
-    },
-    {
-      link: "/about",
-      name: "About",
       selected: false
     },
     {
-      link: "/contact",
+      link: "/about/" + this.userName,
+      name: "About",
+      selected: true
+    },
+    {
+      link: "/contact/" + this.userName,
       name: "Contact",
       selected: false
     },
@@ -32,11 +44,6 @@ export class HomeComponent implements OnInit {
       selected: false
     }
   ];
-
-  constructor(private movieService: MovieService) {
-   }
-
-  ngOnInit() {
   }
 
 }

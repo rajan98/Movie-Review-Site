@@ -13,7 +13,7 @@
         <h5>Rating: {{movie.rating}}</h5>
       </div>
       <div class="d-flex flex-column align-self-center ml-auto">
-        <button class="btn btn-danger ml-3">Remove</button>
+        <button class="btn btn-danger ml-3" (click)="removeMovie(movie.id)">Remove</button>
       </div>
     </div>
   </div>

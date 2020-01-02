@@ -12,7 +12,12 @@ export class MovieService {
     return MOVIES;
   }
 
-  getMovie(id: string): Movie{
+  getMovie(id: string): Movie {
     return MOVIES.filter((movie) => (movie.id === id))[0];
+  }
+
+  removeMovie(id: string): void {
+    let index = MOVIES.findIndex((x) => (x.id === id));
+    MOVIES.splice(index, 1);
   }
 }

@@ -28,4 +28,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
+  removeMovie(id: string): void{
+    this.movieService.removeMovie(id);
+  }
+
 }

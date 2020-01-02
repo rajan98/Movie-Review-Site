@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
 
+import { Params, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -8,21 +10,29 @@ import { Head } from '../shared/head';
 })
 export class ContactUsComponent implements OnInit {
 
-  headerData: Head[] = [
-    {
-      link: "/home",
+  userName: string;
+
+  headerData: Head[];
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.userName = this.route.snapshot.params['userName'];
+    this.headerData = [
+     {
+      link: "/home/" + this.userName,
       name: "Home",
       selected: false
     },
     {
-      link: "/about",
+      link: "/about/" + this.userName,
       name: "About",
-      selected: false
+      selected: true
     },
     {
-      link: "/contact",
+      link: "/contact/" + this.userName,
       name: "Contact",
-      selected: true
+      selected: false
     },
     {
       link: "/login",
@@ -30,10 +40,6 @@ export class ContactUsComponent implements OnInit {
       selected: false
     }
   ];
-
-  constructor() { }
-
-  ngOnInit() {
   }
 
 }

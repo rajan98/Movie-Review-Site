@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
       password :  "admin"
     },
     {
-      username : "udita",
-      password : "atidu"
+      username : "udi",
+      password : "idu"
     },
     {
       username : "tom",
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin']);
         }
         else{
-          this.router.navigate(['home']);
+          this.router.navigate(['home', this.username]);
         }
       }
     }

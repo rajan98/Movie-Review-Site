@@ -7,7 +7,7 @@ export interface Movie {
     description: string;
 }
 
-export const MOVIES: Movie[] = [
+export var MOVIES: Movie[] = [
     {
             id: '1',
             name: "Joker",
