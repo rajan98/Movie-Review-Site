@@ -6,19 +6,21 @@
                 <h1>Login Page</h1>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="" [formGroup]="loginForm" novalidate>
                     <div class="form-group">
                         <label for="username">Username: </label>
                         <input type="text" placeholder="Enter Username" class="form-control" name="username"
-                            id="username" [(ngModel)]="username">
+                            id="username" formControlName="username">
+                            <div  *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched" class="formError">Please enter username</div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password: </label>
                         <input type="password" placeholder="Enter password" class="form-control" name="password"
-                            id="password" [(ngModel)]="password">
+                            id="password" formControlName="password">
+                            <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" class="formError">Please enter password</div>
                     </div>
                     <div class="text-right ">
-                        <button type="button" id="sendlogin" class="btn btn-dark " (click)="loginFunction()">Login</button>
+                        <button type="submit" id="sendlogin" class="btn btn-dark " (click)="loginFunction()" [disabled]="loginForm.invalid">Login</button>
                     </div>
                 </form>
                 <div class="row">
