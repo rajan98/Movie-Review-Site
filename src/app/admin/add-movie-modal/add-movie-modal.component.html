@@ -8,7 +8,8 @@
                 <div class="form-group row">
                     <label for="uploadImage" class="col-md-4">Image: </label>
                     <div class="col-md">
-                        <input type="button" value="Upload Image" id="uploadImage" class="btn btn-dark col-md-8 form-control">
+                        <img [src]="localUrl" height="100" *ngIf="localUrl" class="imgPlaceholder">
+                        <input type="file"  (change)="showPreviewImage($event)" value="Upload Image" id="uploadImage">
                     </div>
                 </div>
                 <div class="form-group row">
