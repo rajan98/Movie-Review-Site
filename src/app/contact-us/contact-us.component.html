@@ -5,34 +5,43 @@
             <h1 style="padding-left: 40px;">Contact Us</h1>
         </div>
         <div class="container">
-            <form action="">
+            <form action="" [formGroup]="contactForm" (ngSubmit)="contactForm.valid && onSubmit()" novalidate>
                 <div class="row">
                     <div class="form-group col-md">
                         <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-control" placeholder="First Name">
+                        <input type="text" id="firstName" class="form-control" placeholder="First Name" formControlName="firstName">
+                        <div  *ngIf="contactForm.get('firstName').hasError('required') && contactForm.get('firstName').touched" class="formError">Please enter first name</div>
                     </div>
                     <div class="form-group col-md">
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                        <input type="text" id="lastName" class="form-control" placeholder="Last Name" formControlName="lastName">
+                        <div  *ngIf="contactForm.get('lastName').hasError('required') && contactForm.get('lastName').touched" class="formError">Please enter last name</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Email">
-                    </div>
+                        <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email">
+                        <div  *ngIf="contactForm.get('email').hasError('required') && contactForm.get('email').touched" class="formError">Please enter email</div>
+                        <div  *ngIf="contactForm.get('email').hasError('email') && contactForm.get('email').touched" class="formError">Please enter a valid email</div>
+                     </div>
                     <div class="form-group col-md">
                         <label for="phoneNo">Phone Number</label>
-                        <input type="number" id="PhoneNo" class="form-control" placeholder="Phone Number">
+                        <input type="number" id="PhoneNo" class="form-control" placeholder="Phone Number" formControlName="phoneNo">
+                        <div  *ngIf="contactForm.get('phoneNo').hasError('required') && contactForm.get('phoneNo').touched" class="formError">Please enter phone number</div>
+                        <div  *ngIf="contactForm.get('phoneNo').hasError('pattern') && contactForm.get('phoneNo').touched" class="formError">Please enter a valid phone number</div>
+                     
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
                         <label for="feedback">Feedback</label>
-                        <textarea id="feedback" rows="4" class="form-control"></textarea>
+                        <textarea id="feedback" rows="4" class="form-control" formControlName="feedback"></textarea>
+                        <div  *ngIf="contactForm.get('feedback').hasError('required') && contactForm.get('feedback').touched" class="formError">Please enter feedback</div>
+                   
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                <button type="submit" class="btn btn-primary mt-2" [disabled]="contactForm.invalid">Submit</button>
             </form>
         </div>
     </div>

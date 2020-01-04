@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Params, ActivatedRoute } from '@angular/router';
 
@@ -14,7 +15,12 @@ export class ContactUsComponent implements OnInit {
 
   headerData: Head[];
 
-  constructor(private route: ActivatedRoute) { }
+  contactForm: FormGroup;
+ 
+  constructor(private route: ActivatedRoute,
+    private fb: FormBuilder) {
+      this.createForm();
+       }
 
   ngOnInit() {
     this.userName = this.route.snapshot.params['userName'];
@@ -41,5 +47,16 @@ export class ContactUsComponent implements OnInit {
     }
   ];
   }
-
+  createForm(): void {
+    this.contactForm = this.fb.group({
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      email: ["",[Validators.required,Validators.email]],
+      phoneNo: ["",[Validators.required,Validators.pattern('[0-9]+'),Validators.minLength(10),Validators.maxLength(10)]],
+      feedback: ["",Validators.required]
+    })
+}
+  onSubmit(){
+    alert(JSON.stringify(this.contactForm.value))
+  }
 }
