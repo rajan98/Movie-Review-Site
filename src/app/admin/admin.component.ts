@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
+import { Feedback } from '../shared/feedback';
+
 import { MovieService } from '../services/movie.service';
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,26 +12,30 @@ import { MovieService } from '../services/movie.service';
 })
 export class AdminComponent implements OnInit {
 
+  feedbacks: Feedback[];
+
   headerData: Head[] = [
     {
-      link: "/admin",
-      name: "Admin Home",
+      link: '/admin',
+      name: 'Admin Home',
       selected: true
     },
     {
-      link: "/login",
-      name: "Logout",
+      link: '/login',
+      name: 'Logout',
       selected: false
     }
   ];
 
-  constructor(private movieService: MovieService) {
-   }
-
-  ngOnInit() {
+  constructor(private movieService: MovieService,
+    private feedbackService: FeedbackService) {
   }
 
-  removeMovie(id: string): void{
+  ngOnInit() {
+    this.feedbacks = this.feedbackService.getFeedbacks();
+  }
+
+  removeMovie(id: string): void {
     this.movieService.removeMovie(id);
   }
 

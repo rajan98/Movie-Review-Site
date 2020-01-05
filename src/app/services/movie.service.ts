@@ -17,7 +17,7 @@ export class MovieService {
   }
 
   removeMovie(id: string): void {
-    let index = MOVIES.findIndex((x) => (x.id === id));
+    const index = MOVIES.findIndex((x) => (x.id === id));
     MOVIES.splice(index, 1);
   }
 }

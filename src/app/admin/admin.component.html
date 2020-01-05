@@ -17,6 +17,18 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="feedbacks" class="mt-4">
+    <h2>User Feedback</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let feedback of feedbacks">
+        <h5>Name: {{ feedback.firstname }} {{ feedback.lastname }}</h5>
+        <p>Email: {{ feedback.email }} Phone No.: {{ feedback.phoneno }}</p>
+        <p>Feedback: {{ feedback.feedback }}</p>
+      </li>
+    </ul>
+  </div>
+  
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

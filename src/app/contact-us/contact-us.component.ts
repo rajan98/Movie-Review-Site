@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Head } from '../shared/head';
+import { Feedback } from '../shared/feedback';
+import { FeedbackService } from '../services/feedback.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Params, ActivatedRoute } from '@angular/router';
@@ -16,47 +18,51 @@ export class ContactUsComponent implements OnInit {
   headerData: Head[];
 
   contactForm: FormGroup;
- 
+  contact: Feedback;
+
   constructor(private route: ActivatedRoute,
-    private fb: FormBuilder) {
-      this.createForm();
-       }
+              private fb: FormBuilder,
+              private feedbackService: FeedbackService) {
+    this.createForm();
+  }
 
   ngOnInit() {
     this.userName = this.route.snapshot.params['userName'];
     this.headerData = [
-     {
-      link: "/home/" + this.userName,
-      name: "Home",
-      selected: false
-    },
-    {
-      link: "/about/" + this.userName,
-      name: "About",
-      selected: true
-    },
-    {
-      link: "/contact/" + this.userName,
-      name: "Contact",
-      selected: false
-    },
-    {
-      link: "/login",
-      name: "Logout",
-      selected: false
-    }
-  ];
+      {
+        link: '/home/' + this.userName,
+        name: 'Home',
+        selected: false
+      },
+      {
+        link: '/about/' + this.userName,
+        name: 'About',
+        selected: true
+      },
+      {
+        link: '/contact/' + this.userName,
+        name: 'Contact',
+        selected: false
+      },
+      {
+        link: '/login',
+        name: 'Logout',
+        selected: false
+      }
+    ];
   }
   createForm(): void {
     this.contactForm = this.fb.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
-      email: ["",[Validators.required,Validators.email]],
-      phoneNo: ["",[Validators.required,Validators.pattern('[0-9]+'),Validators.minLength(10),Validators.maxLength(10)]],
-      feedback: ["",Validators.required]
-    })
-}
-  onSubmit(){
-    alert(JSON.stringify(this.contactForm.value))
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneno: ['', [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]],
+      feedback: ['', Validators.required]
+    });
+  }
+  onSubmit() {
+    this.contact = this.contactForm.value;
+    this.feedbackService.addFeedback(this.contact);
+    console.log(this.feedbackService.getFeedbacks());
   }
 }

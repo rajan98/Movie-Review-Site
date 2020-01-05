@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   headerData: Head[];
 
   constructor(private movieService: MovieService,
-    private route: ActivatedRoute) {
+              private route: ActivatedRoute) {
    }
 
   ngOnInit() {
