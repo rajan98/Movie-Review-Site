@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Head } from '../shared/head';
 import { Feedback } from '../shared/feedback';
 import { FeedbackService } from '../services/feedback.service';
@@ -14,6 +14,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 export class ContactUsComponent implements OnInit {
 
   userName: string;
+  @ViewChild('cform', {static: false}) contactFormDerivative;
 
   headerData: Head[];
 
@@ -64,5 +65,13 @@ export class ContactUsComponent implements OnInit {
     this.contact = this.contactForm.value;
     this.feedbackService.addFeedback(this.contact);
     console.log(this.feedbackService.getFeedbacks());
+    this.contactForm.reset({
+      firstname: '',
+      lastname: '',
+      email: '',
+      phoneno: '',
+      feedback: ''
+    });
+    this.contactFormDerivative.resetForm();
   }
 }

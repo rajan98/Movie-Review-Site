@@ -18,6 +18,7 @@
     </div>
   </div>
 
+  <!--Feedback-->
   <div *ngIf="feedbacks" class="mt-4">
     <h2>User Feedback</h2>
     <ul class="list-group list-group-flush">
@@ -28,7 +29,18 @@
       </li>
     </ul>
   </div>
-  
+
+  <!--Edit About Us-->
+  <div class="my-4">
+  <form action="">
+    <div class="form-group">
+    <label for="aboutUsTextArea"><h2>About Us</h2></label>
+    <textarea id="aboutUsTextArea" rows="10" [(ngModel)]="about" name="aboutUsTextArea" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="setAbout()">Change</button>
+  </form>
+  </div>
+
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

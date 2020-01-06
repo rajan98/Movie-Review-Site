@@ -4,6 +4,7 @@ import { Feedback } from '../shared/feedback';
 
 import { MovieService } from '../services/movie.service';
 import { FeedbackService } from '../services/feedback.service';
+import { AboutService } from '../services/about.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,6 +14,7 @@ import { FeedbackService } from '../services/feedback.service';
 export class AdminComponent implements OnInit {
 
   feedbacks: Feedback[];
+  about: string = "";
 
   headerData: Head[] = [
     {
@@ -28,15 +30,22 @@ export class AdminComponent implements OnInit {
   ];
 
   constructor(private movieService: MovieService,
-    private feedbackService: FeedbackService) {
+    private feedbackService: FeedbackService,
+    private aboutService: AboutService) {
   }
 
   ngOnInit() {
     this.feedbacks = this.feedbackService.getFeedbacks();
+    this.about = this.aboutService.getAbout();
   }
 
   removeMovie(id: string): void {
     this.movieService.removeMovie(id);
   }
+
+  setAbout(): void{
+    console.log(this.about);
+    this.aboutService.setAbout(this.about);
+  } 
 
 }

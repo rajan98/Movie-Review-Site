@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'home/:userName', component: HomeComponent },
-  { path: 'admin/:userName', component: AdminComponent },
+  { path: 'about/:userName', component: AboutUsComponent },
   { path: 'review/:id', component: ReviewComponent },
   { path: 'contact/:userName', component: ContactUsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }

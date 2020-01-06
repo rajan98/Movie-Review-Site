@@ -3,6 +3,8 @@ import { Head } from '../shared/head';
 
 import { Params, ActivatedRoute } from '@angular/router';
 
+import { AboutService } from '../services/about.service';
+
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -11,12 +13,15 @@ import { Params, ActivatedRoute } from '@angular/router';
 export class AboutUsComponent implements OnInit {
   
   userName: string;
+  about: string;
 
   headerData: Head[];
 
-  constructor( private route: ActivatedRoute) { }
+  constructor( private route: ActivatedRoute,
+  private aboutService: AboutService) { }
 
   ngOnInit() {
+    this.about = this.aboutService.getAbout();
     this.userName = this.route.snapshot.params['userName'];
     this.headerData = [
      {
