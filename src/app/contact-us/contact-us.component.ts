@@ -14,7 +14,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 export class ContactUsComponent implements OnInit {
 
   userName: string;
-  @ViewChild('cform', {static: false}) contactFormDerivative;
+  @ViewChild('cform', {static: false}) contactFormD;
 
   headerData: Head[];
 
@@ -72,6 +72,6 @@ export class ContactUsComponent implements OnInit {
       phoneno: '',
       feedback: ''
     });
-    this.contactFormDerivative.resetForm();
+    this.contactFormD.resetForm();
   }
 }

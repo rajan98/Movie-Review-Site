@@ -32,16 +32,20 @@
 
   <!--Edit About Us-->
   <div class="my-4">
-  <form action="">
-    <div class="form-group">
-    <label for="aboutUsTextArea"><h2>About Us</h2></label>
-    <textarea id="aboutUsTextArea" rows="10" [(ngModel)]="about" name="aboutUsTextArea" class="form-control"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="setAbout()">Change</button>
-  </form>
+    <form action="">
+      <div class="form-group">
+        <label for="aboutUsTextArea"><h2>About Us</h2></label>
+        <textarea id="aboutUsTextArea" rows="10" [(ngModel)]="about" name="aboutUsTextArea" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="setAbout()">Change</button>
+    </form>
   </div>
 
 </div>
+
+
+
+<!-- Add Movie Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -53,11 +57,53 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-add-movie-modal></app-add-movie-modal>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="row justify-content-center mb-3">
+          <h1>
+            Add Movie
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form novalidate [formGroup]="addMovieForm" #aForm="ngForm">
+              <div class="row">
+                <label for="uploadImage" class="col-md-4">Image: </label>
+                <div class="col-md">
+                  <img height="100" *ngIf="localUrl" class="imgPlaceholder">
+                  <input type="file" value="Upload Image" id="uploadImage">
+                </div>
+              </div>
+              <div class="row">
+                <label for="movieName" class="col-md-4">Movie Name: </label>
+                <div class="col-md-8">
+                  <input type="text" value="" id="movieName" class="col-md-8" formControlName="name">
+                </div>
+              </div>
+              <div class="row">
+                <label for="rating" class="col-md-4">Rating: </label>
+                <div class="col-md-8">
+                  <input type="range" value="" id="rating" name="rating" min="0" max="10" step="0.5" class="custom-range col-md-8" formControlName="rating" [(ngModel)]="rating">
+                  <p class="ml-3">{{rating}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <label for="rating" class="col-md-4">Release Date: </label>
+                <div class="col-md-8">
+                  <input type="date" value="" id="rating" class="col-md-8" formControlName="releaseDate">
+                </div>
+              </div>
+              <div class="row">
+                <label for="description" class="col-md-4">Description: </label>
+                <div class="col-md-8">
+                  <textarea value="" id="description" class="col-md-8" formControlName="description"></textarea>
+                </div>
+              </div>
+              <div class="modal-footer mt-3">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" [disabled]="addMovieForm.invalid" (click)="addMovie()">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

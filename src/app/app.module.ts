@@ -11,7 +11,6 @@ import { ReviewComponent } from './review/review.component';
 import { AdminComponent } from './admin/admin.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.component';
 
 import { AppRoutingModule } from './routing/routing.module';
 
@@ -30,7 +29,6 @@ import { AboutService } from './services/about.service';
     AdminComponent,
     AboutUsComponent,
     ContactUsComponent,
-    AddMovieModalComponent
   ],
   imports: [
     BrowserModule,

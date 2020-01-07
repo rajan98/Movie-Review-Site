@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Head } from '../shared/head';
 import { Feedback } from '../shared/feedback';
 
 import { MovieService } from '../services/movie.service';
 import { FeedbackService } from '../services/feedback.service';
 import { AboutService } from '../services/about.service';
+
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -13,8 +15,18 @@ import { AboutService } from '../services/about.service';
 })
 export class AdminComponent implements OnInit {
 
+  id: string='';
+  name: string;
+  picSrc: string = "";
+  releaseDate: string;
+  rating: string;
+  description: string;
+
   feedbacks: Feedback[];
   about: string = "";
+
+  addMovieForm: FormGroup;
+  @ViewChild('aForm', {static: false}) addMovieFormD;
 
   headerData: Head[] = [
     {
@@ -31,7 +43,9 @@ export class AdminComponent implements OnInit {
 
   constructor(private movieService: MovieService,
     private feedbackService: FeedbackService,
-    private aboutService: AboutService) {
+    private aboutService: AboutService,
+    private fb: FormBuilder) {
+      this.createForm();
   }
 
   ngOnInit() {
@@ -43,9 +57,27 @@ export class AdminComponent implements OnInit {
     this.movieService.removeMovie(id);
   }
 
-  setAbout(): void{
+  setAbout(): void {
     console.log(this.about);
     this.aboutService.setAbout(this.about);
-  } 
+  }
 
+  addMovie(): void {
+    this.id = (Number(this.movieService.getLastMovieId()) + 1).toString();
+    this.name = this.addMovieForm.get('name').value;
+    this.rating = this.addMovieForm.get('rating').value;
+    this.releaseDate = this.addMovieForm.get('releaseDate').value;
+    this.description = this.addMovieForm.get('description').value;
+    this.movieService.addMovie(this.id, this.name, this.picSrc, this.rating + '/10', this.releaseDate, this.description);
+    this.addMovieFormD.resetForm();
+  }
+
+  createForm(): void{
+    this.addMovieForm = this.fb.group({
+      name: ['', Validators.required],
+      rating: ['', Validators.required],
+      releaseDate: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
 }
